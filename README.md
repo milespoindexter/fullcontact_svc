@@ -1,4 +1,5 @@
 FullContact Service  
+Basic relay service with dynamic throttling to prevent client from going over FullContact's API usage limits  
 2014-01-27  
   
 Miles Poindexter  
