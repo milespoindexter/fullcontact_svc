@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="person">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="statusRC"/>
+        <xs:element ref="requestId"/>
+        <xs:element ref="likelihood"/>
+        <xs:element ref="photos"/>
+        <xs:element ref="contactInfo"/>
+        <xs:element ref="organizations"/>
+        <xs:element ref="demographics"/>
+        <xs:element ref="socialProfiles"/>
+        <xs:element ref="digitalFootprint"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="statusRC" type="xs:integer"/>
+  <xs:element name="requestId" type="xs:string"/>
+  <xs:element name="photos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="photo"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="photo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="typeId"/>
+        <xs:element ref="typeName"/>
+        <xs:element ref="url"/>
+        <xs:element ref="isPrimary"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="contactInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="chats"/>
+        <xs:element ref="websites"/>
+        <xs:element ref="familyName"/>
+        <xs:element ref="fullName"/>
+        <xs:element ref="givenName"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="chats">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="chat"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="chat">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="client"/>
+        <xs:element ref="handle"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="client" type="xs:NCName"/>
+  <xs:element name="handle" type="xs:string"/>
+  <xs:element name="websites">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="website"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="website">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="url"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="familyName" type="xs:NCName"/>
+  <xs:element name="fullName" type="xs:string"/>
+  <xs:element name="givenName" type="xs:NCName"/>
+  <xs:element name="organizations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="organization"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="organization">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="isPrimary"/>
+        <xs:element ref="name"/>
+        <xs:element ref="startDate"/>
+        <xs:element minOccurs="0" ref="endDate"/>
+        <xs:element ref="title"/>
+        <xs:element ref="current"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="startDate" type="xs:NMTOKEN"/>
+  <xs:element name="endDate" type="xs:NMTOKEN"/>
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="current" type="xs:boolean"/>
+  <xs:element name="demographics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="locationDeduced"/>
+        <xs:element ref="gender"/>
+        <xs:element ref="locationGeneral"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="locationDeduced">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="normalizedLocation"/>
+        <xs:element ref="deducedLocation"/>
+        <xs:element ref="city"/>
+        <xs:element ref="state"/>
+        <xs:element ref="country"/>
+        <xs:element ref="continent"/>
+        <xs:element ref="county"/>
+        <xs:element ref="likelihood"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="normalizedLocation" type="xs:string"/>
+  <xs:element name="deducedLocation" type="xs:string"/>
+  <xs:element name="city">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="deduced"/>
+        <xs:element ref="name"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="state">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="deduced"/>
+        <xs:element ref="name"/>
+        <xs:element ref="code"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="country">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="deduced"/>
+        <xs:element ref="name"/>
+        <xs:element ref="code"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="continent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="deduced"/>
+        <xs:element ref="name"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="county">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="deduced"/>
+        <xs:element ref="name"/>
+        <xs:element ref="code"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="gender" type="xs:NCName"/>
+  <xs:element name="locationGeneral" type="xs:string"/>
+  <xs:element name="socialProfiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="socialProfile"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="socialProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" ref="bio"/>
+        <xs:element minOccurs="0" ref="followers"/>
+        <xs:element minOccurs="0" ref="following"/>
+        <xs:element minOccurs="0" ref="type"/>
+        <xs:element ref="typeId"/>
+        <xs:element ref="typeName"/>
+        <xs:element ref="url"/>
+        <xs:element minOccurs="0" ref="username"/>
+        <xs:element minOccurs="0" ref="id"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="bio" type="xs:string"/>
+  <xs:element name="followers" type="xs:integer"/>
+  <xs:element name="following" type="xs:integer"/>
+  <xs:element name="type" type="xs:NCName"/>
+  <xs:element name="username" type="xs:NCName"/>
+  <xs:element name="id" type="xs:string"/>
+  <xs:element name="digitalFootprint">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="topics"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="topics">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="topic"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="topic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="provider"/>
+        <xs:element ref="value"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="provider" type="xs:NCName"/>
+  <xs:element name="value" type="xs:string"/>
+  <xs:element name="likelihood" type="xs:decimal"/>
+  <xs:element name="typeId" type="xs:NCName"/>
+  <xs:element name="typeName" type="xs:string"/>
+  <xs:element name="url" type="xs:anyURI"/>
+  <xs:element name="isPrimary" type="xs:boolean"/>
+  <xs:element name="name" type="xs:string"/>
+  <xs:element name="deduced" type="xs:boolean"/>
+  <xs:element name="code" type="xs:NCName"/>
+</xs:schema>
